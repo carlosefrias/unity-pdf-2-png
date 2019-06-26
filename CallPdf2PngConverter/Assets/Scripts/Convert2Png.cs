@@ -17,7 +17,7 @@ namespace Assets.Scripts
         }
 
 
-        public void ExecuteCommand(string converterFilePath, string pdfFilePath)
+        private void ExecuteCommand(string converterFilePath, string pdfFilePath)
         {
 
             var fullPath = Path.GetFullPath(converterFilePath);
@@ -36,9 +36,9 @@ namespace Assets.Scripts
                 using (var reader = process.StandardOutput)
                 {
                     var stderr = process.StandardError.ReadToEnd(); // Here are the exceptions from our Python script
-                    Console.Error.WriteLine(stderr);
+                    print(stderr);
                     var result = reader.ReadToEnd(); // Here is the result of StdOut(for example: print "test")
-                    Console.WriteLine(result);
+                    print(result);
                 }
             }
         }
